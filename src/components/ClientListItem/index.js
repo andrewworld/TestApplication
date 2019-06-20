@@ -9,23 +9,13 @@ export default class ClientsListItem extends React.PureComponent {
     onPress(client);
   };
 
-  onLongPress = () => {
-    const { onLongPress, client } = this.props;
-
-    onLongPress(client);
-  };
-
   render() {
     const {
       client: { firstName, lastName, phone }
     } = this.props;
 
     return (
-      <TouchableOpacity
-        onLongPress={this.onLongPress}
-        onPress={this.onPress}
-        style={styles.container}
-      >
+      <TouchableOpacity onPress={this.onPress} style={styles.container}>
         <View style={styles.initialsContainer}>
           <Text style={styles.initials}>
             {firstName[0].toUpperCase() + lastName[0].toUpperCase()}

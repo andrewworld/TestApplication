@@ -26,8 +26,6 @@ class ClientsScreen extends React.PureComponent {
 
   onItemPress = ({ id }) => this.props.openDetail(id);
 
-  onItemLongPress = ({ id }) => this.props.deleteClient(id);
-
   onHeaderRightPress = () => this.props.openDetail();
 
   renderHeaderRight = () => (
@@ -52,19 +50,10 @@ class ClientsScreen extends React.PureComponent {
           style={styles.search}
           onChangeText={this.setSearchText}
         />
-        <ClientsList
-          data={this.data}
-          onItemPress={this.onItemPress}
-          onItemLongPress={this.onItemLongPress}
-        />
+        <ClientsList data={this.data} onItemPress={this.onItemPress} />
       </View>
     );
   }
 }
 
-export default connect(
-  ({ data }) => ({ data }),
-  dispatch => ({
-    deleteClient: id => dispatch(deleteClient(id))
-  })
-)(ClientsScreen);
+export default connect(({ data }) => ({ data }))(ClientsScreen);

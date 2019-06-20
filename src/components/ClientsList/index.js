@@ -24,15 +24,9 @@ export default class ClientsList extends React.PureComponent {
   keyExtractor = ({ id }) => id;
 
   renderItem = ({ item: client }) => {
-    const { onItemPress, onItemLongPress } = this.props;
+    const { onItemPress } = this.props;
 
-    return (
-      <ClientListItem
-        client={client}
-        onPress={onItemPress}
-        onLongPress={onItemLongPress}
-      />
-    );
+    return <ClientListItem client={client} onPress={onItemPress} />;
   };
 
   renderHeader = ({ section: { title } }) => (
